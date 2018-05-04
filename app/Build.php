@@ -57,4 +57,9 @@ class Build extends Model
         return Tower::find($this->tower_id);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
