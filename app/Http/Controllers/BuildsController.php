@@ -17,14 +17,12 @@ use App\Tower;
 
 class BuildsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
+    public function index() {
+        $builds = Build::all()->where('user_id', Auth::id());
+
+
+
+        return view('builds.index', compact('builds'));
     }
 
     public function create()
@@ -39,7 +37,7 @@ class BuildsController extends Controller
         $components['power_supply'] = array('models' => PowerSupply::all(), 'title' => 'Power Supply');
         $components['optical_drive'] = array('models' => OpticalDrive::all(), 'title' => 'Optical Drive');
 
-        return view('build.create', compact('components'));
+        return view('builds.create', compact('components'));
     }
 
     public function store()
@@ -53,7 +51,7 @@ class BuildsController extends Controller
             'tower_id' => request('tower'),
             'power_supply_id' => request('power_supply'),
             'optical_drive_id' => request('optical_drive'),
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::id()
         ])->id;
 
         return redirect('/builds/'.$buildId);
@@ -81,6 +79,8 @@ class BuildsController extends Controller
         $chosenComponents['power_supply'] = $build['power_supply_id'];
         $chosenComponents['optical_drive'] = $build['optical_drive_id'];
 
-        return view('build.show', compact('components', 'chosenComponents'));
+        // TODO: if not logged in, return another view (one without the form)
+
+        return view('builds.show', compact('components', 'chosenComponents'));
     }
 }
