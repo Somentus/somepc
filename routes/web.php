@@ -16,7 +16,7 @@ Auth::routes();
 Route::get('/home', 'BuildsController@index')->name('home');
 Route::get('/', 'BuildsController@index');
 
-Route::get('/builds/create', 'BuildsController@create');
+Route::get('/builds/create', 'BuildsController@create')->name('createBuild');
 Route::get('/builds/{build}', 'BuildsController@show');
 
 Route::post('/builds', 'BuildsController@store');
