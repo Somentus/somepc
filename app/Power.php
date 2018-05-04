@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OpticalDrive extends Model
+class Power extends Model
 {
-    //
+
 }

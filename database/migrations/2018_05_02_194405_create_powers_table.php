@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOpticalDrivesTable extends Migration
+class CreatePowersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOpticalDrivesTable extends Migration
      */
     public function up()
     {
-        Schema::create('optical_drives', function (Blueprint $table) {
+        Schema::create('powers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateOpticalDrivesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('optical_drives');
+        Schema::dropIfExists('powers');
     }
 }
