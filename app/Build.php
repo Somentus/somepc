@@ -17,42 +17,42 @@ class Build extends Model
 {
     protected $fillable = ['user_id', 'processor_id', 'motherboard_id', 'memory_id', 'graphics_id', 'storage_id', 'optical_id', 'tower_id', 'power_id'];
 
-    public function Graphic()
+    public function graphic()
     {
         return Graphic::find($this->graphics_id);
     }
 
-    public function Memory()
+    public function memory()
     {
         return Memory::find($this->memory_id);
     }
 
-    public function Motherboard()
+    public function motherboard()
     {
         return Motherboard::find($this->motherboard_id);
     }
 
-    public function Optical()
+    public function optical()
     {
         return Optical::find($this->optical_id);
     }
 
-    public function Power()
+    public function power()
     {
         return Power::find($this->power_id);
     }
 
-    public function Processor()
+    public function processor()
     {
         return Processor::find($this->processor_id);
     }
 
-    public function Storage()
+    public function storage()
     {
         return Storage::find($this->storage_id);
     }
 
-    public function Tower()
+    public function tower()
     {
         return Tower::find($this->tower_id);
     }
