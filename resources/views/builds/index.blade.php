@@ -5,6 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
+        	@foreach($builds as $build)
+        		<a href="/builds/{{ $build->id }}">
+	        		<h3>TODO: NAME OF THE BUILD</h3>
+	        		{{ $build->processor()->name }}<br>
+	        		{{ $build->graphic()->name }}<br>
+	        		{{ $build->memory()->name }}<br>
+	        		{{ $build->storage()->name }}<br><br>
+	        	</a>
+        	@endforeach
+
         </div>
     </div>
 </div>
