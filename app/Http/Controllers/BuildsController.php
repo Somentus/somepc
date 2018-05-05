@@ -30,15 +30,16 @@ class BuildsController extends Controller
 
     public function create()
     {
-        $components = array();
-        $components['processor'] = array('models' => Processor::all(), 'title' => 'Processor');
-        $components['motherboard'] = array('models' => Motherboard::all(), 'title' => 'Motherboard');
-        $components['graphics'] = array('models' => Graphic::all(), 'title' => 'Graphics Card');
-        $components['memory'] = array('models' => Memory::all(), 'title' => 'Memory');
-        $components['storage'] = array('models' => Storage::all(), 'title' => 'Storage');
-        $components['tower'] = array('models' => Tower::all(), 'title' => 'Case');
-        $components['power'] = array('models' => Power::all(), 'title' => 'Power Supply');
-        $components['optical'] = array('models' => Optical::all(), 'title' => 'Optical Drive');
+        $components = [
+            'processor' => Processor::all(),
+            'motherboard' => Motherboard::all(),
+            'graphics' => Graphic::all(),
+            'memory' => Memory::all(),
+            'storage' => Storage::all(),
+            'tower' => Tower::all(),
+            'power' => Power::all(),
+            'optical' => Optical::all()
+        ];
 
         return view('builds.create', compact('components'));
     }
