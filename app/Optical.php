@@ -8,8 +8,5 @@ use App\Build;
 
 class Optical extends Model
 {
-public function user()
-    {
-    	return $this->belongsTo('Build');
-    }
+	//
 }
