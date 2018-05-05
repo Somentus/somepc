@@ -17,6 +17,11 @@ use App\Tower;
 
 class BuildsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('show');
+    }
+
     public function index() {
         $builds = Build::all()->where('user_id', Auth::id());
 
