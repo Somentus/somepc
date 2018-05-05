@@ -8,5 +8,7 @@ use App\Build;
 
 class Optical extends Model
 {
-	//
+	public function name() {
+		return "Optical Drive";
+	}
 }

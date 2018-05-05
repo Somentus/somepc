@@ -63,17 +63,17 @@ class BuildsController extends Controller
     public function show(Build $build)
     {
         $components = array();
-        $components['processor'] = array('models' => Processor::all(), 'title' => 'Processor');
-        $components['motherboard'] = array('models' => Motherboard::all(), 'title' => 'Motherboard');
-        $components['graphics'] = array('models' => Graphic::all(), 'title' => 'Graphics Card');
-        $components['memory'] = array('models' => Memory::all(), 'title' => 'Memory');
-        $components['storage'] = array('models' => Storage::all(), 'title' => 'Storage');
-        $components['tower'] = array('models' => Tower::all(), 'title' => 'Case');
-        $components['power'] = array('models' => Power::all(), 'title' => 'Power Supply');
-        $components['optical'] = array('models' => Optical::all(), 'title' => 'Optical Drive');
+        $components['processor'] = Processor::all();
+        $components['motherboard'] = Motherboard::all();
+        $components['graphics'] = Graphic::all();
+        $components['memory'] = Memory::all();
+        $components['storage'] = Storage::all();
+        $components['tower'] = Tower::all();
+        $components['power'] = Power::all();
+        $components['optical'] = Optical::all();
 
         // TODO: if not logged in, return another view (one without the form)
-        
+
         return view('builds.show', compact('components', 'build'));
     }
 }

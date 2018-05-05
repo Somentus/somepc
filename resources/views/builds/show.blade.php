@@ -7,10 +7,10 @@
 
             <form action="/builds" method="POST" >
 
-            	@foreach($components as $key=>$component)
+            	@foreach($components as $key=>$models)
             		<div class="form-group">
-	            		<h3>{{ $component['title'] }}</h3>
-						@foreach($component['models'] as $model)
+	            		<h3>{{ $models['0']->name() }}</h3>
+						@foreach($models as $model)
 							<div class="form-check">
 								<input class="form-check-input" type="radio" name="{{ $key }}" id="{{ $model['name'] }}" value="{{ $model['id'] }}"
 								@if($build->{(new \ReflectionClass($model))->getShortName()}()['id'] == $model['id'])
