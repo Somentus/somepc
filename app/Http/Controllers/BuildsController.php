@@ -72,18 +72,8 @@ class BuildsController extends Controller
         $components['power'] = array('models' => Power::all(), 'title' => 'Power Supply');
         $components['optical'] = array('models' => Optical::all(), 'title' => 'Optical Drive');
 
-        $chosenComponents = array();
-        $chosenComponents['processor'] = $build['processor_id'];
-        $chosenComponents['motherboard'] = $build['motherboard_id'];
-        $chosenComponents['graphics'] = $build['graphics_id'];
-        $chosenComponents['memory'] = $build['memory_id'];
-        $chosenComponents['storage'] = $build['storage_id'];
-        $chosenComponents['tower'] = $build['tower_id'];
-        $chosenComponents['power'] = $build['power_id'];
-        $chosenComponents['optical'] = $build['optical_id'];
-
         // TODO: if not logged in, return another view (one without the form)
-
-        return view('builds.show', compact('components', 'chosenComponents'));
+        
+        return view('builds.show', compact('components', 'build'));
     }
 }

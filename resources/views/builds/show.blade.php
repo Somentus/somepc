@@ -13,7 +13,7 @@
 						@foreach($component['models'] as $model)
 							<div class="form-check">
 								<input class="form-check-input" type="radio" name="{{ $key }}" id="{{ $model['name'] }}" value="{{ $model['id'] }}"
-								@if($chosenComponents[$key] == $model['id'])
+								@if($build->{(new \ReflectionClass($model))->getShortName()}()['id'] == $model['id'])
 									checked
 								@endif
 								>
