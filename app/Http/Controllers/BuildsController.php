@@ -62,15 +62,16 @@ class BuildsController extends Controller
 
     public function show(Build $build)
     {
-        $components = array();
-        $components['processor'] = Processor::all();
-        $components['motherboard'] = Motherboard::all();
-        $components['graphics'] = Graphic::all();
-        $components['memory'] = Memory::all();
-        $components['storage'] = Storage::all();
-        $components['tower'] = Tower::all();
-        $components['power'] = Power::all();
-        $components['optical'] = Optical::all();
+        $components = [
+            'processor' => Processor::all(),
+            'motherboard' => Motherboard::all(),
+            'graphics' => Graphic::all(),
+            'memory' => Memory::all(),
+            'storage' => Storage::all(),
+            'tower' => Tower::all(),
+            'power' => Power::all(),
+            'optical' => Optical::all()
+        ];
 
         // TODO: if not logged in, return another view (one without the form)
 
