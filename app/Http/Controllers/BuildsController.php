@@ -46,19 +46,23 @@ class BuildsController extends Controller
 
     public function store()
     {
-        $buildId = Build::create([
-            'processor_id' => request('processor'),
-            'motherboard_id' => request('motherboard'),
-            'graphics_id' => request('graphics'),
-            'memory_id' => request('memory'),
-            'storage_id' => request('storage'),
-            'tower_id' => request('tower'),
-            'power_id' => request('power'),
-            'optical_id' => request('optical'),
-            'user_id' => Auth::id()
-        ])->id;
+        if(Auth::check()){
+            $buildId = Build::create([
+                'processor_id' => request('processor'),
+                'motherboard_id' => request('motherboard'),
+                'graphics_id' => request('graphics'),
+                'memory_id' => request('memory'),
+                'storage_id' => request('storage'),
+                'tower_id' => request('tower'),
+                'power_id' => request('power'),
+                'optical_id' => request('optical'),
+                'user_id' => Auth::id()
+            ])->id;
 
-        return redirect('/builds/'.$buildId);
+            return redirect('/builds/'.$buildId);
+        }
+
+        return back();
     }
 
     public function show(Build $build)
@@ -75,7 +79,11 @@ class BuildsController extends Controller
         ];
 
         // TODO: if not logged in, return another view (one without the form)
+        if(Auth::check()) {
+            return view('builds.edit', compact('components', 'build'));
+        }
 
         return view('builds.show', compact('components', 'build'));
+
     }
 }

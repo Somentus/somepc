@@ -5,6 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
+            <form action="/builds" method="POST" >
+
             	@foreach($components as $key=>$models)
             		<div class="form-group">
 	            		<h3>{{ $models['0']->name() }}</h3>
@@ -13,8 +15,6 @@
 								<input class="form-check-input" type="radio" name="{{ $key }}" id="{{ $model['name'] }}" value="{{ $model['id'] }}"
 								@if($build->{(new \ReflectionClass($model))->getShortName()}()['id'] == $model['id'])
 									checked
-								@else
-									disabled
 								@endif
 								>
 								
@@ -26,6 +26,10 @@
             		</div>
 				@endforeach
 				@csrf
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
 
         </div>
     </div>
