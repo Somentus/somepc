@@ -13,8 +13,7 @@
 
 Auth::routes();
 
-Route::get('/home', 'BuildsController@index')->name('home');
-Route::get('/', 'BuildsController@index');
+Route::get('/', 'BuildsController@index')->name('home');
 
 Route::get('/builds/create', 'BuildsController@create')->name('createBuild');
 Route::get('/builds/{build}', 'BuildsController@show');
