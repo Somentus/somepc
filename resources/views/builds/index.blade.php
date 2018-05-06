@@ -7,11 +7,11 @@
 
         	@foreach($builds as $build)
         		<a href="/builds/{{ $build->id }}">
-	        		<h3>TODO: NAME OF THE BUILD</h3>
+	        		<h3>{{ $build->name }}</h3>
 	        		{{ $build->processor()->name }}<br>
 	        		{{ $build->graphic()->name }}<br>
 	        		{{ $build->memory()->name }}<br>
-	        		{{ $build->storage()->name }}<br><br>
+                    <br>
 	        	</a>
         	@endforeach
 

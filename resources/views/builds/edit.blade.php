@@ -11,6 +11,10 @@
             	<h2>{{ $build->name }}</h2>
            		<h4>By {{ $build->user->name }}</h4>
     			<hr>
+
+    			<h5>Name of the build</h5>
+    			<input type="text" class="form-control" name="name" id="name" placeholder="Enter build name">
+    			<br>
             	@foreach($components as $key=>$models)
             		<div class="form-group">
 	            		<h3>{{ $models['0']->name() }}</h3>
