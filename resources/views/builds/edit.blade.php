@@ -8,6 +8,8 @@
             <form action="/builds" method="POST" >
             	<input name="id" type="hidden" value="{{ $build->id }}">
 
+            	<h2>by {{ $build->user->name }}</h2>
+    			<br>
             	@foreach($components as $key=>$models)
             		<div class="form-group">
 	            		<h3>{{ $models['0']->name() }}</h3>

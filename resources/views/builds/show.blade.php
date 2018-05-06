@@ -5,6 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
+    			<h2>by {{ $build->user->name }}</h2>
+    			<br>
             	@foreach($components as $key=>$models)
             		<div class="form-group">
 	            		<h3>{{ $models['0']->name() }}</h3>
