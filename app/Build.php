@@ -15,7 +15,7 @@ use App\Tower;
 
 class Build extends Model
 {
-    protected $fillable = ['user_id', 'processor_id', 'motherboard_id', 'memory_id', 'graphics_id', 'storage_id', 'optical_id', 'tower_id', 'power_id'];
+    protected $fillable = ['name', 'user_id', 'processor_id', 'motherboard_id', 'memory_id', 'graphics_id', 'storage_id', 'optical_id', 'tower_id', 'power_id'];
 
     public function graphic()
     {

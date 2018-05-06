@@ -7,9 +7,12 @@
 
             <form action="/builds" method="POST" >
 
+            	<h5>Name of the build</h5>
+    			<input type="text" class="form-control" name="name" id="name" placeholder="Enter build name">
+    			<br>
             	@foreach($components as $key=>$models)
             		<div class="form-group">
-	            		<h3>{{ $models['0']->name() }}</h3>
+	            		<h5>{{ $models['0']->name() }}</h5>
 						@foreach($models as $model)
 							<div class="form-check">
 								<input class="form-check-input" type="radio" name="{{ $key }}" id="{{ $model['name'] }}" value="{{ $model['id'] }}" checked>
@@ -19,6 +22,7 @@
 							</div>
 						@endforeach
             		</div>
+            	<br>
 				@endforeach
 				@csrf
 

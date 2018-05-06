@@ -50,6 +50,7 @@ class BuildsController extends Controller
             $buildId = request('id');
             $build = Build::find($buildId);
             if($build) {
+                $build->name = request('name');
                 $build->processor_id = request('processor');
                 $build->motherboard_id = request('motherboard');
                 $build->graphics_id = request('graphics');
@@ -61,6 +62,7 @@ class BuildsController extends Controller
                 $build->save();
             } else {
                 $buildId = Build::create([
+                    'name' => request('name'),
                     'processor_id' => request('processor'),
                     'motherboard_id' => request('motherboard'),
                     'graphics_id' => request('graphics'),
