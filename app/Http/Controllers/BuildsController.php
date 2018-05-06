@@ -47,17 +47,32 @@ class BuildsController extends Controller
     public function store()
     {
         if(Auth::check()){
-            $buildId = Build::create([
-                'processor_id' => request('processor'),
-                'motherboard_id' => request('motherboard'),
-                'graphics_id' => request('graphics'),
-                'memory_id' => request('memory'),
-                'storage_id' => request('storage'),
-                'tower_id' => request('tower'),
-                'power_id' => request('power'),
-                'optical_id' => request('optical'),
-                'user_id' => Auth::id()
-            ])->id;
+            $buildId = request('id');
+            $build = Build::find($buildId);
+            if($build) {
+                $build->processor_id = request('processor');
+                $build->motherboard_id = request('motherboard');
+                $build->graphics_id = request('graphics');
+                $build->memory_id = request('memory');
+                $build->storage_id = request('storage');
+                $build->tower_id = request('tower');
+                $build->power_id = request('power');
+                $build->optical_id = request('optical');
+                $build->save();
+            } else {
+                $buildId = Build::create([
+                    'processor_id' => request('processor'),
+                    'motherboard_id' => request('motherboard'),
+                    'graphics_id' => request('graphics'),
+                    'memory_id' => request('memory'),
+                    'storage_id' => request('storage'),
+                    'tower_id' => request('tower'),
+                    'power_id' => request('power'),
+                    'optical_id' => request('optical'),
+                    'user_id' => Auth::id()
+                ])->id;
+
+            }
 
             return redirect('/builds/'.$buildId);
         }
@@ -78,7 +93,6 @@ class BuildsController extends Controller
             'optical' => Optical::all()
         ];
 
-        // TODO: if not logged in, return another view (one without the form)
         if(Auth::check()) {
             return view('builds.edit', compact('components', 'build'));
         }

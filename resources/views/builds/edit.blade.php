@@ -6,6 +6,7 @@
         <div class="col-md-8">
 
             <form action="/builds" method="POST" >
+            	<input name="id" type="hidden" value="{{ $build->id }}">
 
             	@foreach($components as $key=>$models)
             		<div class="form-group">
