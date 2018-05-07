@@ -49,8 +49,8 @@ class BuildsController extends Controller
         if(Auth::check()){
             $buildId = request('id');
             $build = Build::find($buildId);
-            if($build->user_id == Auth::id()) {
-                if($build) {
+            if($build) {
+                if($build->user_id == Auth::id()) {
                     $build->name = request('name');
                     $build->processor_id = request('processor');
                     $build->motherboard_id = request('motherboard');
@@ -62,19 +62,22 @@ class BuildsController extends Controller
                     $build->optical_id = request('optical');
                     $build->save();
                 } else {
-                    $buildId = Build::create([
-                        'name' => request('name'),
-                        'processor_id' => request('processor'),
-                        'motherboard_id' => request('motherboard'),
-                        'graphics_id' => request('graphics'),
-                        'memory_id' => request('memory'),
-                        'storage_id' => request('storage'),
-                        'tower_id' => request('tower'),
-                        'power_id' => request('power'),
-                        'optical_id' => request('optical'),
-                        'user_id' => Auth::id()
-                    ])->id;
+                    // TODO: Error: you can't edit that build!
+                    dd("Error: You can't edit that build!");
                 }
+            } else {
+                $buildId = Build::create([
+                    'name' => request('name'),
+                    'processor_id' => request('processor'),
+                    'motherboard_id' => request('motherboard'),
+                    'graphics_id' => request('graphics'),
+                    'memory_id' => request('memory'),
+                    'storage_id' => request('storage'),
+                    'tower_id' => request('tower'),
+                    'power_id' => request('power'),
+                    'optical_id' => request('optical'),
+                    'user_id' => Auth::id()
+                ])->id;
             }
 
             return redirect('/builds/'.$buildId);
