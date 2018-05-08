@@ -13,7 +13,7 @@
     			<hr>
 
     			<h5>Name of the build</h5>
-    			<input type="text" class="form-control" name="name" id="name" placeholder="Enter build name">
+    			<input type="text" class="form-control" name="name" id="name" value="{{ $build->name }}">
     			<br>
             	@foreach($components as $key=>$models)
             		<div class="form-group">
