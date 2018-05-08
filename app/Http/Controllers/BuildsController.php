@@ -44,22 +44,35 @@ class BuildsController extends Controller
         return view('builds.create', compact('components'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
         if(Auth::check()){
-            $buildId = request('id');
+            $buildId = $request->id;
+
+            $validatedData = $request->validate([
+                'name' => 'required|min:1',
+                'processor' => 'required',
+                'motherboard' => 'required',
+                'graphics' => 'required',
+                'memory' => 'required',
+                'storage' => 'required',
+                'tower' => 'required',
+                'power' => 'required',
+                'optical' => 'required',
+            ]);
+
             $build = Build::find($buildId);
             if($build) {
                 if($build->user_id == Auth::id()) {
-                    $build->name = request('name');
-                    $build->processor_id = request('processor');
-                    $build->motherboard_id = request('motherboard');
-                    $build->graphics_id = request('graphics');
-                    $build->memory_id = request('memory');
-                    $build->storage_id = request('storage');
-                    $build->tower_id = request('tower');
-                    $build->power_id = request('power');
-                    $build->optical_id = request('optical');
+                    $build->name = $request->name;
+                    $build->processor_id = $request->processor;
+                    $build->motherboard_id = $request->motherboard;
+                    $build->graphics_id = $request->graphics;
+                    $build->memory_id = $request->memory;
+                    $build->storage_id = $request->storage;
+                    $build->tower_id = $request->tower;
+                    $build->power_id = $request->power;
+                    $build->optical_id = $request->optical;
                     $build->save();
                 } else {
                     // TODO: Error: you can't edit that build!
